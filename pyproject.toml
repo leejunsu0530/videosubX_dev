@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["videosubx*"]
+
+[project]
+name = "videosubX"
+version = "0.0.0"
+authors = [
+    { name = "leejunsu0530", email = "leejunsu0530@gmail.com" }
+]
+description = "Make translated video and audio subtitle"
+readme = "README.md"
+requires-python = ">=3.11,<3.14" # paddlepaddle, whisperx 때문에 13으로 제한. 3.12 이하면 <3.13이라 적어야 3.12.1 등을 포함함
+keywords = ["translate", "translation", "whisper", "ocr", "video", "audio", "subtitle"]
+license = { file = "LICENSE" }
+dependencies = [ # paddlepaddle, torch는 별도 설치
+    "whisperx", 
+    "deep-translator",
+    "rich",
+    "yt-dlp[default,curl-cffi]",
+    "transformers",
+    "hf_xet",
+    "accelerate",
+    "silero-vad",
+    "pywhispercpp",
+    # "opencv-python",
+    # "paddleocr",
+    
+]
+
+[project.optional-dependencies]
+dev = ["pip-licenses"]
+test = ["datasets"] 
+deno = ["yt-dlp[deno]"]
+gui = [
+    "Pyside6",
+    "gradio",
+    "pywebview",
+]
+ovgenai = [
+    "nncf==2.19.0", 
+    "onnx==1.18.0",
+    "optimum-intel==2.1.0",
+    "transformers==5.0.0",
+    "openvino==2026.4.0",
+    "openvino-tokenizers==2026.4.0.0",
+    "openvino-genai==2026.4.0.0"
+]
+intel = [ # 최신 버전을 위해 github에서 가져옴
+    "openvino", 
+    "optimum-intel[openvino] @ git+https://github.com/huggingface/optimum-intel.git"
+]
+
+[project.scripts]
+# vidsubx = "videosubx:main" # 모듈경로:함수이름 구조
+# vidsubx-gui = "videosubx.gui:main"
+
+[project.urls]
+Homepage = "https://github.com/leejunsu0530/videosubX_dev"
+Repository = "https://github.com/leejunsu0530/videosubX_dev"
+
+[tool.mypy]
+# python_version = "3.13"
+# mypy_path = ["typings"]
