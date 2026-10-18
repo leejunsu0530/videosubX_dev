@@ -1,0 +1,4 @@
+# Common worker dependencies. Install engine packages separately; see WHISPER_BENCHMARK.md.
+numpy>=1.26
+psutil>=5.9
+rapidfuzz>=3.0

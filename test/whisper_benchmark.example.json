@@ -1,0 +1,27 @@
+{
+  "defaults": {
+    "model": "base",
+    "language": "ko",
+    "threads": 4,
+    "beam_size": 1,
+    "warmup": 1,
+    "repeats": 3,
+    "timeout": 3600,
+    "normalization": "basic"
+  },
+  "samples": [
+    {"audio": "./audio/sample.mp4", "reference_file": "./audio/sample.txt"}
+  ],
+  "runs": [
+    {"engine": "openai", "device": "cpu", "dtype": "float32"},
+    {"engine": "hf-pipeline", "device": "cpu", "dtype": "float32"},
+    {"engine": "hf-direct", "device": "cpu", "dtype": "float32"},
+    {"engine": "whispercpp", "device": "cpu"},
+    {"engine": "faster-whisper", "device": "cpu", "compute_type": "float32"},
+    {"engine": "faster-whisper", "device": "cpu", "compute_type": "int8"},
+    {"engine": "openvino-genai", "model": "./models/whisper-base-fp16", "device": "cpu"},
+    {"engine": "openvino-genai", "model": "./models/whisper-base-fp16", "device": "gpu.0"},
+    {"engine": "openvino-genai", "model": "./models/whisper-base-fp16", "device": "npu"},
+    {"engine": "optimum-intel", "model": "./models/whisper-base-fp16", "device": "gpu.0"}
+  ]
+}

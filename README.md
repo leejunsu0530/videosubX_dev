@@ -1,6 +1,8 @@
 # videosubX_dev
 Make translated video and audio subtitle
 
+Whisper 구현체 비교: [벤치마크 실행·설정 안내](test/WHISPER_BENCHMARK.md)
+
 기능: 비디오와 오디오에 대한 번역된 자막 생성.
 상세:
 - 현재는 다운로드 지원 안함.
